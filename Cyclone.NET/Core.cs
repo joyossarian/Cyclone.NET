@@ -5,6 +5,13 @@ using System.Text;
 
 namespace Cyclone.NET
 {
+    public class SleepEpsilon
+    {
+        static double sleepEpsilon;
+        static void setSleepEpsilon(double value) { sleepEpsilon = value; }
+        static double getSleepEpsilon() { return sleepEpsilon; }
+    }
+
     public class Vector3
     {
         public double x;
@@ -22,5 +29,15 @@ namespace Cyclone.NET
             this.y = y;
             this.z = z;
         }
+
+        static readonly Vector3 GRAVITY = new Vector3(0, -9.81f, 0);
+        static readonly Vector3 HIGH_GRAVITY = new Vector3(0, -19.62, 0);
+        static readonly Vector3 UP = new Vector3(0, 1, 0);
+        static readonly Vector3 RIGHT = new Vector3(1, 0, 0);
+        static readonly Vector3 OUT_OF_SCREEN = new Vector3(0, 0, 1);
+        // a mistake in original cyclone code: x is set (0, 1, 0), y is set to (1,0,0)
+        static readonly Vector3 X = new Vector3(1, 0, 0);
+        static readonly Vector3 Y = new Vector3(0, 1, 0);
+        static readonly Vector3 Z = new Vector3(0, 0, 1);
     }
 }
