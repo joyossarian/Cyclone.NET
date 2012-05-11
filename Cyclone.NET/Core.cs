@@ -39,5 +39,9 @@ namespace Cyclone.NET
         static readonly Vector3 X = new Vector3(1, 0, 0);
         static readonly Vector3 Y = new Vector3(0, 1, 0);
         static readonly Vector3 Z = new Vector3(0, 0, 1);
+
+        double operator[](UInt16 i) const
+        {
+    }
     }
 }
