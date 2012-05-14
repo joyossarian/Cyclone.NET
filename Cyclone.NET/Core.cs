@@ -5,6 +5,12 @@ using System.Text;
 
 namespace Cyclone.NET
 {
+    public class SleepEpsilon
+    {
+        static double sleepEpsilon = 0.3f;
+        static void 
+    }
+
     public class Vector3
     {
         public double x;
