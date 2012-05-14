@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Cyclone.NET
 {
@@ -94,9 +91,39 @@ namespace Cyclone.NET
             return new Vector3(v.x * value, v.y * value, v.z * value);
         }
 
+        public static Vector3 operator %(Vector3 v1, Vector3 v2)
+        {
+            return v1.vectorProduct(v2);
+        }
+
+         public static double operator *(Vector3 v1, Vector3 v2)
+         {
+             return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+         }
+
         public Vector3 componentProduct(Vector3 vector)
         {
             return new Vector3(x * vector.x, y * vector.y, z * vector.z);
         }
+
+        public void componentProductUpdate(Vector3 vector)
+        {
+            x *= vector.x;
+            y *= vector.y;
+            z *= vector.z;
+        }
+
+        public Vector3 vectorProduct(Vector3 vector)
+        {
+            return new Vector3(y * vector.z - z * vector.y,
+                z * vector.x - x * vector.z, x * vector.y - y * vector.z);
+        }
+
+        public double scalarProduct(Vector3 vector)
+        {
+            return x * vector.x + y * vector.y + z * vector.z;
+        }
+
+       
     }
 }
