@@ -93,5 +93,10 @@ namespace Cyclone.NET
         {
             return new Vector3(v.x * value, v.y * value, v.z * value);
         }
+
+        public Vector3 componentProduct(Vector3 vector)
+        {
+            return new Vector3(x * vector.x, y * vector.y, z * vector.z);
+        }
     }
 }
