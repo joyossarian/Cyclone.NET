@@ -96,10 +96,10 @@ namespace Cyclone.NET
             return v1.vectorProduct(v2);
         }
 
-         public static double operator *(Vector3 v1, Vector3 v2)
-         {
-             return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-         }
+        public static double operator *(Vector3 v1, Vector3 v2)
+        {
+            return v1.scalarProduct(v2);
+        }
 
         public Vector3 componentProduct(Vector3 vector)
         {
@@ -124,6 +124,50 @@ namespace Cyclone.NET
             return x * vector.x + y * vector.y + z * vector.z;
         }
 
-       
+        public void addScaledVector(Vector3 vector, double scale)
+        {
+            x += vector.x * scale;
+            y += vector.y * scale;
+            z += vector.z * scale;
+        }
+
+        public double magnitude()
+        {
+            return Math.Sqrt(x * x + y * y + z * z);
+        }
+
+        public double squareMagnitude()
+        {
+            return x * x + y * y + z * z;
+        }
+
+        public void trim(double size)
+        {
+            if (squareMagnitude() > size * size)
+            {
+                normalize();
+                x *= size;
+                y *= size;
+                z *= size;
+            }
+        }
+
+        public void normalize()
+        {
+            double i = magnitude();
+            if (i > 0)
+            {
+                x *= (double)(1 / i);
+                y *= (double)(1 / i);
+                z *= (double)(1 / i);
+            }
+        }
+
+        public Vector3 unit()
+        {
+            Vector3 result = new Vector3(x, y, z);
+            result.normalize();
+            return result;
+        }
     }
 }

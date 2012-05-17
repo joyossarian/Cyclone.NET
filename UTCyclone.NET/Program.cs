@@ -23,6 +23,9 @@ namespace UTCyclone.NET
             Console.WriteLine("x {0}, y {1}, z{1}", t4.x, t4.y, t4.z);
             Vector3 t5 = t1 % t2;
             Console.WriteLine("x {0}, y {1}, z{1}", t5.x, t5.y, t5.z);
+            Vector3 t6 = new Vector3(2.0f, 2.0f, 2.0f);
+            Vector3 t7 = t6.unit();
+            Console.WriteLine("x {0}, y {1}, z{1}", t7.x, t7.y, t7.z);
         }
     }
 }
