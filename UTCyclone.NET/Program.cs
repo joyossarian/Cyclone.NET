@@ -25,7 +25,15 @@ namespace UTCyclone.NET
             Console.WriteLine("x {0}, y {1}, z{1}", t5.x, t5.y, t5.z);
             Vector3 t6 = new Vector3(2.0f, 2.0f, 2.0f);
             Vector3 t7 = t6.unit();
+            Console.WriteLine("x {0}, y {1}, z{1}", t6.x, t6.y, t6.z);
             Console.WriteLine("x {0}, y {1}, z{1}", t7.x, t7.y, t7.z);
+            Vector3 t8 = new Vector3(2.0f, 2.0f, 2.0f);
+            Vector3 t9 = new Vector3(3.0f, 3.0f, 3.0f);
+            Console.WriteLine("{0}", t8 < t9);
+            t8 = t9;
+            Console.WriteLine("{0}", t8 == t9);
+            Console.WriteLine("{0}", t8 <= t9);
+
         }
     }
 }

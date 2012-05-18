@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.DirectX;
 
 namespace Cyclone.NET
 {
@@ -169,5 +170,36 @@ namespace Cyclone.NET
             result.normalize();
             return result;
         }
+
+        public static bool operator ==(Vector3 v1, Vector3 v2)
+        {
+            return (v1.x == v2.x && v1.y == v2.y && v1.z == v2.z);
+        }
+
+        public static bool operator !=(Vector3 v1, Vector3 v2)
+        {
+            return !(v1 == v2);
+        }
+
+        public static bool operator <(Vector3 v1, Vector3 v2)
+        {
+            return (v1.x < v2.x && v1.y < v2.y && v1.z < v2.z);
+        }
+
+        public static bool operator >(Vector3 v1, Vector3 v2)
+        {
+            return (v1.x > v2.x && v1.y > v2.y && v1.z > v2.z);
+        }
+
+        public static bool operator <=(Vector3 v1, Vector3 v2)
+        {
+            return (v1.x <= v2.x && v1.y <= v2.y && v1.z <= v2.z);
+        }
+
+        public static bool operator >=(Vector3 v1, Vector3 v2)
+        {
+            return (v1.x >= v2.x && v1.y >= v2.y && v1.z >= v2.z);
+        }
+
     }
 }
