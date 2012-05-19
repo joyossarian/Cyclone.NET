@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.DirectX;
 
 namespace Cyclone.NET
 {
