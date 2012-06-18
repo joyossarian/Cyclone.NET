@@ -27,7 +27,7 @@ namespace Cyclone.NET
             this.z = z;
         }
 
-        static readonly Vector3 GRAVITY = new Vector3(0, -9.81f, 0);
+        static readonly Vector3 GRAVITY = new Vector3(0, -9.8, 0);
         static readonly Vector3 HIGH_GRAVITY = new Vector3(0, -19.62, 0);
         static readonly Vector3 UP = new Vector3(0, 1, 0);
         static readonly Vector3 RIGHT = new Vector3(1, 0, 0);
@@ -200,5 +200,59 @@ namespace Cyclone.NET
             return (v1.x >= v2.x && v1.y >= v2.y && v1.z >= v2.z);
         }
 
+        public void clear()
+        {
+            x = y = z = 0;
+        }
+
+        public void invert()
+        {
+            x = -x; y = -y; z = -z;
+        }
     }
+
+    class Quaternion
+    {
+        public double r;
+        public double i;
+        public double j;
+        public double k;
+
+        public Quaternion()
+        {
+            r = 1.0;
+            i = 0.0;
+            j = 0.0;
+            k = 0.0;
+        }
+
+        public Quaternion(double r, double i, double j, double k)
+        {
+            this.r = r;
+            this.i = i;
+            this.j = j;
+            this.k = k;
+        }
+
+        void normalize()
+        {
+            double d = r * r + i * i + j * j + k * k;
+
+            if (d == 0)
+            {
+                r = 1;
+                return;
+            }
+
+            d = ((double)1.0) / Math.Sqrt(d);
+            r *= d;
+            i *= d;
+            j *= d;
+            k *= d;
+        }
+
+       //public static Quaternion operator*()
+
+    }
+
 }
