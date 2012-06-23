@@ -251,7 +251,40 @@ namespace Cyclone.NET
             k *= d;
         }
 
-       //public static Quaternion operator*()
+       public static Quaternion operator*(Quaternion q1, Quaternion q2)
+        {
+            Quaternion result = new Quaternion();
+            result.r = q1.r * q2.r - q1.i * q2.i - q1.j * q2.j - q1.k * q2.k;
+            result.i = q1.r * q2.i + q1.i * q2.r + q1.j * q2.k - q1.k * q2.j;
+            result.j = q1.r * q2.j + q1.j * q2.r + q1.k * q2.i - q1.i * q2.k;
+            result.k = q1.r * q2.k + q1.k * q2.r + q1.i * q2.j - q1.j * q2.i;
+           
+            return result;
+        }
+
+        public void addScaledVector(Vector3 vector, double scale)
+       {
+           Quaternion q = new Quaternion(0, vector.x * scale, vector.y * scale, vector.z * scale);
+           q *= this;
+           this.r += q.r * 0.5f;
+           this.i += q.i * 0.5f;
+           this.j += q.j * 0.5f;
+           this.k += q.k * 0.5f;
+       }
+
+        public void rotateByVector(Vector3 vector)
+        {
+            Quaternion q = new Quaternion(0, vector.x, vector.y, vector.z);
+            Quaternion result = this * q;
+            this.r = result.r;
+            this.i = result.i;
+            this.j = result.j;
+            this.k = result.k;
+        }
+    }
+
+    class Matrix4
+    {
 
     }
 
