@@ -294,6 +294,36 @@ namespace Cyclone.NET
             data[0] = data[5] = data[10] = 1;
         }
 
+        void setDiagonal(double a, double b, double c)
+        {
+            data[0] = a;
+            data[5] = b;
+            data[10] = c;
+        }
+
+        public static Matrix4 operator*(Matrix4 m1, Matrix4 m2)
+        {
+            Matrix4 result = new Matrix4();
+            // rewrite it in my favourite order                       
+            result.data[0] = (m2.data[0] * m1.data[0] + m2.data[4] * m1.data[1] + m2.data[8] * m1.data[2]);
+            result.data[1] = (m2.data[1] * m1.data[0] + m2.data[5] * m1.data[1] + m2.data[9] * m1.data[2]);
+            result.data[2] = (m2.data[2] * m1.data[0] + m2.data[6] * m1.data[1] + m2.data[10] * m1.data[2]);
+            result.data[3] = (m2.data[3] * m1.data[0] + m2.data[7] * m1.data[1] + m2.data[11] * m1.data[2]) + m1.data[3];
+
+            result.data[4] = (m2.data[0] * m1.data[4] + m2.data[4] * m1.data[5] + m2.data[8] * m1.data[6]);
+            result.data[5] = (m2.data[1] * m1.data[4] + m2.data[5] * m1.data[5] + m2.data[9] * m1.data[6]);
+            result.data[6] = (m2.data[2] * m1.data[4] + m2.data[6] * m1.data[5] + m2.data[10] * m1.data[6]);
+            result.data[7] = (m2.data[3] * m1.data[4] + m2.data[7] * m1.data[5] * m2.data[11] * m1.data[6]) + m1.data[7];
+
+            result.data[8] = (m2.data[0] * m1.data[8] + m2.data[4] * m1.data[9] + m2.data[8] * m1.data[10]);
+            result.data[9] = (m2.data[1] * m1.data[8] + m2.data[5] * m1.data[9] + m2.data[9] * m1.data[10]);
+            result.data[10] = (m2.data[2] * m1.data[8] + m2.data[6] * m1.data[9] + m2.data[10] * m1.data[10]);
+            result.data[11] = (m2.data[3] * m1.data[9] + m2.data[7] * m1.data[9] + m2.data[11] * m1.data[10]) + m1.data[11];
+
+
+            return result;
+        }
+
     }
 
 }
