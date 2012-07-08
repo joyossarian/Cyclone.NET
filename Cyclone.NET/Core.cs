@@ -320,10 +320,41 @@ namespace Cyclone.NET
             result.data[10] = (m2.data[2] * m1.data[8] + m2.data[6] * m1.data[9] + m2.data[10] * m1.data[10]);
             result.data[11] = (m2.data[3] * m1.data[9] + m2.data[7] * m1.data[9] + m2.data[11] * m1.data[10]) + m1.data[11];
 
-
             return result;
         }
 
+        public static Vector3 operator *(Matrix4 m, Vector3 v)
+        {
+            // matrix left multiply vector
+            Vector3 result = new Vector3(
+                m.data[0] * v.x + m.data[1] * v.y + m.data[2] * v.z + m.data[3],
+                m.data[4] * v.x + m.data[5] * v.y + m.data[6] * v.z + m.data[7],
+                m.data[8] * v.x + m.data[9] * v.y + m.data[10] * v.z + m.data[11]
+                );
+            
+            return result;
+        }
+
+        public Vector3 transform(Vector3 v)
+        {
+            return (this * v);
+        }
+
+        public double getDeterminant()
+        {
+            // Let A be a square matrix of order n. Write A = (aij), 
+            // where aij is the entry on the row number i and the column number j, 
+            // for   and  . For any i and j, set Aij (called the cofactors) to be 
+            // the determinant of the square matrix of order (n-1) obtained from 
+            // A by removing the row number i and the column number j multiplied by (-1)i+j. 
+            // We have det(A) = sum (j = 1 -> j=n) aij * Aij
+            return data[8] * data[5] * data[2] +
+            data[4] * data[9] * data[2] +
+            data[8] * data[1] * data[6] -
+            data[0] * data[9] * data[6] -
+            data[4] * data[1] * data[10] +
+            data[0] * data[5] * data[10];
+        }
     }
 
 }
