@@ -355,6 +355,106 @@ namespace Cyclone.NET
             data[4] * data[1] * data[10] +
             data[0] * data[5] * data[10];
         }
+
+        // Sets the matrix to be the inverse of the given matrix
+        public void setInverse(Matrix4 m)
+        {
+            double det = getDeterminant();
+            if (det == 0) return;
+            det = 1.0f / det;
+
+            data[0] = (-m.data[9] * m.data[6] + m.data[5] * m.data[10]) * det;
+            data[4] = (m.data[8] * m.data[6] - m.data[4] * m.data[10]) * det;
+            data[8] = (-m.data[8] * m.data[5] + m.data[4] * m.data[9]) * det;
+
+            data[1] = (m.data[9] * m.data[2] - m.data[1] * m.data[10]) * det;
+            data[5] = (-m.data[8] * m.data[2] + m.data[0] * m.data[10]) * det;
+            data[9] = (m.data[8] * m.data[1] - m.data[0] * m.data[9]) * det;
+
+            data[2] = (-m.data[5] * m.data[2] + m.data[1] * m.data[6]) * det;
+            data[6] = (+m.data[4] * m.data[2] - m.data[0] * m.data[6]) * det;
+            data[10] = (-m.data[4] * m.data[1] + m.data[0] * m.data[5]) * det;
+
+            data[3] = (m.data[9] * m.data[6] * m.data[3]
+                       - m.data[5] * m.data[10] * m.data[3]
+                       - m.data[9] * m.data[2] * m.data[7]
+                       + m.data[1] * m.data[10] * m.data[7]
+                       + m.data[5] * m.data[2] * m.data[11]
+                       - m.data[1] * m.data[6] * m.data[11]) * det;
+            data[7] = (-m.data[8] * m.data[6] * m.data[3]
+                       + m.data[4] * m.data[10] * m.data[3]
+                       + m.data[8] * m.data[2] * m.data[7]
+                       - m.data[0] * m.data[10] * m.data[7]
+                       - m.data[4] * m.data[2] * m.data[11]
+                       + m.data[0] * m.data[6] * m.data[11]) * det;
+            data[11] = (m.data[8] * m.data[5] * m.data[3]
+                       - m.data[4] * m.data[9] * m.data[3]
+                       - m.data[8] * m.data[1] * m.data[7]
+                       + m.data[0] * m.data[9] * m.data[7]
+                       + m.data[4] * m.data[1] * m.data[11]
+                       - m.data[0] * m.data[5] * m.data[11]) * det;
+        }
+
+        public Matrix4 inverse()
+        {
+            Matrix4 m = new Matrix4();
+            m.setInverse(this);
+            return m;
+        }
+
+        Vector3 transformDirection(Vector3 vector)
+        {
+            return new Vector3(
+                vector.x * data[0] + vector.y * data[1] + vector.z * data[2],
+                vector.x * data[4] + vector.y * data[5] + vector.z * data[6],
+                vector.x * data[8] + vector.y * data[9] + vector.z * data[10]
+                );
+        }
+
+        Vector3 transformInverseDirection( Vector3 vector)
+        {
+            return new Vector3(
+                vector.x * data[0] +
+                vector.y * data[4] +
+                vector.z * data[8],
+
+                vector.x * data[1] +
+                vector.y * data[5] +
+                vector.z * data[9],
+
+                vector.x * data[2] +
+                vector.y * data[6] +
+                vector.z * data[10]
+            );
+        }
+
+        Vector3 transformInverse(Vector3 vector)
+        {
+            Vector3 tmp = vector;
+            tmp.x -= data[3];
+            tmp.y -= data[7];
+            tmp.z -= data[11];
+            return new Vector3(
+                tmp.x * data[0] +
+                tmp.y * data[4] +
+                tmp.z * data[8],
+
+                tmp.x * data[1] +
+                tmp.y * data[5] +
+                tmp.z * data[9],
+
+                tmp.x * data[2] +
+                tmp.y * data[6] +
+                tmp.z * data[10]
+            );
+        }
+
+        Vector3 getAxisVector(int i)
+        {
+            return new Vector3(data[i], data[i+4], data[i+8]);
+        }
+
+
     }
 
 }
