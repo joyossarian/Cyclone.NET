@@ -1,0 +1,5 @@
+D:\ProjectDepo\GitHub\Cyclone.NET\Cyclone.NET\obj\Debug\ResolveAssemblyReference.cache
+D:\ProjectDepo\GitHub\Cyclone.NET\Cyclone.NET\bin\Debug\Cyclone.NET.dll
+D:\ProjectDepo\GitHub\Cyclone.NET\Cyclone.NET\bin\Debug\Cyclone.NET.pdb
+D:\ProjectDepo\GitHub\Cyclone.NET\Cyclone.NET\obj\Debug\Cyclone.NET.dll
+D:\ProjectDepo\GitHub\Cyclone.NET\Cyclone.NET\obj\Debug\Cyclone.NET.pdb

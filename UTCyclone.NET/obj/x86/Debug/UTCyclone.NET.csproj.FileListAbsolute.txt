@@ -1,0 +1,7 @@
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\bin\Debug\UTCyclone.NET.exe
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\bin\Debug\UTCyclone.NET.pdb
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\bin\Debug\Cyclone.NET.dll
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\bin\Debug\Cyclone.NET.pdb
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\obj\x86\Debug\UTCyclone.NET.exe
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\obj\x86\Debug\UTCyclone.NET.pdb
+D:\ProjectDepo\GitHub\Cyclone.NET\UTCyclone.NET\obj\x86\Debug\UTCyclone.NET.csprojResolveAssemblyReference.cache
